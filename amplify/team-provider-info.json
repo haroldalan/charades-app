@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-charadesapp-dev-07b17-authRole",
+      "UnauthRoleArn": "arn:aws:iam::771039116338:role/amplify-charadesapp-dev-07b17-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::771039116338:role/amplify-charadesapp-dev-07b17-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-charadesapp-dev-07b17-deployment",
+      "UnauthRoleName": "amplify-charadesapp-dev-07b17-unauthRole",
+      "StackName": "amplify-charadesapp-dev-07b17",
+      "StackId": "arn:aws:cloudformation:us-east-1:771039116338:stack/amplify-charadesapp-dev-07b17/2880fa40-0e71-11f0-997f-0ebb6ef8d587",
+      "AmplifyAppId": "d8x4quusq21zt"
+    },
+    "categories": {
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
+    }
+  }
+}
