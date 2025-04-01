@@ -5,8 +5,10 @@
   align-items: flex-end;
   justify-content: flex-start;
   min-height: 100vh;
+  height: 100vh; /* Changed from min-height to height */
   padding: 40px 20px;
   position: relative;
+  overflow: hidden; /* Prevent content from overflowing the container */
 }
 
 .movieTitle {
@@ -88,7 +90,7 @@
 }
 
 /* Button styling */
-.next-movie-button { /* Removed :global */
+.next-movie-button {
   background: none;
   border: none;
   padding: 0;

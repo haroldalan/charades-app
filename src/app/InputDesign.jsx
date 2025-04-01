@@ -11,7 +11,7 @@ function InputDesign() {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState("Loading"); // State for animated loading text
+  const [loadingText, setLoadingText] = useState("Loading");
   const loadingInterval = useRef(null);
 
   // Use environment variable for API URL
@@ -79,7 +79,7 @@ function InputDesign() {
           return prevText + ".";
         }
       });
-    }, 500); // Adjust speed of animation here (milliseconds)
+    }, 500);
 
     return () => {
       if (loadingInterval.current) {
