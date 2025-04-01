@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./InputDesign.module.css";
 import NextMovieButton from "./NextMovieButton";
 
@@ -10,15 +11,15 @@ function InputDesign() {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [loadingDots, setLoadingDots] = useState("");
-  const previousButtonRef = useRef(null);
+  const [loadingText, setLoadingText] = useState("Loading"); // State for animated loading text
+  const loadingInterval = useRef(null);
 
-  const apiUrl = process.env.REACT_APP_API_URL; // Using environment variable
+  // Use environment variable for API URL
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const fetchMovieBatch = async () => {
     setLoading(true);
     setError(null);
-    setLoadingDots(""); // Reset dots when fetching
 
     try {
       const response = await fetch(apiUrl, {
@@ -47,29 +48,10 @@ function InputDesign() {
     }
   };
 
-  const previousMovie = useCallback(() => {
-    if (movieBatch.length > 0 && currentMovieIndex > 0) {
-      setCurrentMovieIndex(currentMovieIndex - 1);
-    }
-  }, [movieBatch, currentMovieIndex]);
-
-  const handlePreviousClick = () => {
-    if (!loading && currentMovieIndex > 0 && previousButtonRef.current) {
-      previousButtonRef.current.classList.add(styles.buttonClick);
-      setTimeout(() => {
-        if (previousButtonRef.current) {
-          previousButtonRef.current.classList.remove(styles.buttonClick);
-        }
-        previousMovie();
-      }, 100);
-    } else if (!loading) {
-      previousMovie();
-    }
-  };
-
   const nextMovie = () => {
     if (movieBatch.length > 0) {
       const currentMovie = movieBatch[currentMovieIndex];
+      // Update used movies when moving to the next one in the batch
       if (!usedMovies.includes(currentMovie)) {
         setUsedMovies([...usedMovies, currentMovie]);
       }
@@ -77,83 +59,68 @@ function InputDesign() {
       if (currentMovieIndex < movieBatch.length - 1) {
         setCurrentMovieIndex(currentMovieIndex + 1);
       } else {
+        // Batch is exhausted, fetch a new one
         fetchMovieBatch();
       }
     }
   };
 
   useEffect(() => {
-    let intervalId;
-    if (loading) {
-      intervalId = setInterval(() => {
-        setLoadingDots((prevDots) => {
-          if (prevDots.length < 3) {
-            return prevDots + ".";
-          } else {
-            return "";
-          }
-        });
-      }, 500);
-    } else {
-      clearInterval(intervalId);
-      setLoadingDots("");
-    }
-
-    return () => clearInterval(intervalId);
-  }, [loading]);
-
-  useEffect(() => {
     fetchMovieBatch();
   }, []);
 
+  // Loading animation effect
+  useEffect(() => {
+    loadingInterval.current = setInterval(() => {
+      setLoadingText((prevText) => {
+        if (prevText === "Loading...") {
+          return "Loading";
+        } else {
+          return prevText + ".";
+        }
+      });
+    }, 500); // Adjust speed of animation here (milliseconds)
+
+    return () => {
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+      }
+    };
+  }, [loading]);
+
   return (
     <>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Impact&display=swap"
+        rel="stylesheet"
+      />
       <main className={styles.container}>
-        {loading && <h1 className={styles.movieTitle}>Loading{loadingDots}</h1>}
+        {loading && <h1 className={styles.movieTitle}>{loadingText}</h1>}
         {error && (
-          <button
-            onClick={fetchMovieBatch}
-            style={{
-              background: "none",
-              border: "2px solid red",
-              padding: "10px 20px",
-              cursor: "pointer",
-              color: "red",
-              fontFamily: "Impact, sans-serif",
-              fontSize: "20px",
-            }}
-          >
-            Refresh
-          </button>
+          <h1 className={styles.movieTitle} style={{ color: "red" }}>
+            Error: {error}
+          </h1>
         )}
         {movieBatch.length > 0 && !loading && !error && (
-          <h1 className={styles.movieTitle}>
-            {movieBatch[currentMovieIndex]}
-          </h1>
+          <h1 className={styles.movieTitle}>{movieBatch[currentMovieIndex]}</h1>
         )}
         {movieBatch.length === 0 && !loading && !error && (
           <button onClick={fetchMovieBatch}>Fetch Initial Movies</button>
         )}
-        <div className={styles.ctaContainer}>
+        <nav className={styles.navigationControls}>
           <button
-            ref={previousButtonRef}
-            onClick={handlePreviousClick}
-            disabled={loading || currentMovieIndex === 0}
-            style={{
-              background: "none",
-              border: "none",
-              padding: "0",
-              cursor: loading || currentMovieIndex === 0 ? "not-allowed" : "pointer",
-              color: loading || currentMovieIndex === 0 ? "#555" : "#fff",
-              fontFamily: "Impact",
-              fontSize: "16px",
-              transition: "opacity 0.1s ease-in-out",
+            aria-label="Previous Movie"
+            className={styles.previousButton}
+            onClick={() => {
+              if (currentMovieIndex > 0) {
+                setCurrentMovieIndex(currentMovieIndex - 1);
+              }
             }}
           >
             Previous
           </button>
-          <NextMovieButton onClick={nextMovie} disabled={loading} />
-        </div>
+          <NextMovieButton onClick={nextMovie} />
+        </nav>
       </main>
     </>
   );
