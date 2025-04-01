@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 40;
+  padding: 40px;
   margin: 0;
 }
 
@@ -39,7 +39,7 @@
 
 @media (width<=991px) {
   .container {
-    padding: 28; /* Reset padding */
+    padding: 28px; /* Reset padding */
   }
 
   .movieTitle {
@@ -52,7 +52,7 @@
 
 @media (width<=640px) {
   .container {
-    padding: 20; /* Reset padding */
+    padding: 12px; /* Reset padding */
   }
 
   .movieTitle {
