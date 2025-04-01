@@ -13,7 +13,7 @@ function InputDesign() {
   const [loadingDots, setLoadingDots] = useState("");
   const previousButtonRef = useRef(null);
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL; // Using environment variable
+  const apiUrl = process.env.REACT_APP_API_URL; // Using environment variable
 
   const fetchMovieBatch = async () => {
     setLoading(true);
@@ -61,7 +61,7 @@ function InputDesign() {
           previousButtonRef.current.classList.remove(styles.buttonClick);
         }
         previousMovie();
-      }, 100); // Adjust the duration of the animation
+      }, 100);
     } else if (!loading) {
       previousMovie();
     }
@@ -70,7 +70,6 @@ function InputDesign() {
   const nextMovie = () => {
     if (movieBatch.length > 0) {
       const currentMovie = movieBatch[currentMovieIndex];
-      // Update used movies when moving to the next one in the batch
       if (!usedMovies.includes(currentMovie)) {
         setUsedMovies([...usedMovies, currentMovie]);
       }
@@ -78,7 +77,6 @@ function InputDesign() {
       if (currentMovieIndex < movieBatch.length - 1) {
         setCurrentMovieIndex(currentMovieIndex + 1);
       } else {
-        // Batch is exhausted, fetch a new one
         fetchMovieBatch();
       }
     }
@@ -95,13 +93,13 @@ function InputDesign() {
             return "";
           }
         });
-      }, 500); // Adjust the interval speed as needed
+      }, 500);
     } else {
-      clearInterval(intervalId); // Clear the interval when not loading
-      setLoadingDots(""); // Ensure dots are cleared
+      clearInterval(intervalId);
+      setLoadingDots("");
     }
 
-    return () => clearInterval(intervalId); // Cleanup on unmount
+    return () => clearInterval(intervalId);
   }, [loading]);
 
   useEffect(() => {
@@ -110,12 +108,6 @@ function InputDesign() {
 
   return (
     <>
-      <link
-        rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Impact&display=swap"
-        as="style"
-        onload="this.onload=null;this.rel='stylesheet'"
-      />
       <main className={styles.container}>
         {loading && <h1 className={styles.movieTitle}>Loading{loadingDots}</h1>}
         {error && (
@@ -142,7 +134,7 @@ function InputDesign() {
         {movieBatch.length === 0 && !loading && !error && (
           <button onClick={fetchMovieBatch}>Fetch Initial Movies</button>
         )}
-        <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <div className={styles.ctaContainer}>
           <button
             ref={previousButtonRef}
             onClick={handlePreviousClick}
@@ -153,9 +145,9 @@ function InputDesign() {
               padding: "0",
               cursor: loading || currentMovieIndex === 0 ? "not-allowed" : "pointer",
               color: loading || currentMovieIndex === 0 ? "#555" : "#fff",
-              fontFamily: "Impact, sans-serif",
+              fontFamily: "Impact",
               fontSize: "16px",
-              transition: "opacity 0.1s ease-in-out", // For smoother disabled state
+              transition: "opacity 0.1s ease-in-out",
             }}
           >
             Previous
