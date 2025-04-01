@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 0;
+  padding: 0 20px; /* Added padding on left and right */
   margin: 0;
 }
 
@@ -30,7 +30,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Changed from center to flex-end */
+  justify-content: flex-end;
   width: 100%;
   overflow-wrap: break-word;
   max-height: 80vh;
@@ -39,7 +39,7 @@
 
 @media (width<=991px) {
   .container {
-    padding: 30px 15px;
+    padding: 0 15px; /* Adjusted padding for medium screens */
   }
 
   .movieTitle {
@@ -52,7 +52,7 @@
 
 @media (width<=640px) {
   .container {
-    padding: 20px 10px;
+    padding: 0 10px; /* Adjusted padding for small screens */
   }
 
   .movieTitle {
@@ -69,7 +69,6 @@
   justify-content: flex-end;
   gap: 24px;
   width: 100%;
-  /* position: absolute; */
   bottom: 40px;
 }
 
