@@ -7,39 +7,85 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 5%; /* Consistent padding */
+  padding: 0;
   margin: 0;
+}
+
+@font-face {
+  font-family: 'Impact';
+  src: url('/fonts/impact.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .movieTitle {
   color: #fff;
   text-align: right;
   font-family: 'Impact', sans-serif;
-  font-size: 8vh; /* Scalable font size */
+  font-size: 80px;
   font-weight: 400;
   margin: 0;
-  flex: 1; /* Allow it to grow */
+  position: relative;
+  top: 0;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   overflow-wrap: break-word;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@media (width<=991px) {
+  .container {
+    padding: 0; /* Reset padding */
+  }
+
+  .movieTitle {
+    font-size: 72px;
+    right: 15px;
+    bottom: 80px;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (width<=640px) {
+  .container {
+    padding: 0; /* Reset padding */
+  }
+
+  .movieTitle {
+    font-size: 60px;
+    right: 10px;
+    bottom: 60px;
+    overflow-wrap: break-word;
+  }
 }
 
 .navigationControls {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 5%; /* Consistent gap */
+  gap: 24px;
   width: 100%;
+  bottom: 40px;
+}
+
+@media (width<=640px) {
+  .navigationControls {
+    gap: 12px;
+    bottom: 20px;
+    right: 10px;
+  }
 }
 
 .previousButton {
   color: #fff;
   background-color: #000;
-  padding: 2% 5%; /* Consistent button padding */
+  padding: 10px 12px;
   font-family: Impact, sans-serif;
-  font-size: 2.5vh; /* Scalable font size */
+  font-size: 16px;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
@@ -49,6 +95,7 @@
   opacity: 0.6;
 }
 
+/* Button styling */
 .next-movie-button {
   background: none;
   border: none;
