@@ -25,14 +25,16 @@
   font-size: 80px;
   font-weight: 400;
   margin: 0;
-  position: relative; /* Needed for absolute positioning of children */
+  position: relative;
   top: 0;
   flex: 1; /* Allow it to grow and take available space */
   display: flex;
   align-items: center; /* Center vertically within available space */
-  justify-content: flex-end;
+  justify-content: center; /* Center vertically */
   width: 100%;
   overflow-wrap: break-word;
+  max-height: 80vh; /* Limit the maximum height of the title */
+  overflow-y: auto; /* Enable internal scrolling if needed */
 }
 
 @media (width<=991px) {
@@ -66,10 +68,9 @@
   align-items: center;
   justify-content: flex-end;
   gap: 24px;
-  position: absolute; /* Position at the bottom */
-  bottom: 40px;
-  right: 20px;
   width: 100%;
+  /* position: absolute; */  /* Removed absolute positioning */
+  bottom: 40px;
 }
 
 @media (width<=640px) {
