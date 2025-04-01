@@ -10,7 +10,10 @@ function NextMovieButton({ onClick }) {
         viewBox="0 0 197 60"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ width: "197px", height="60px" }}
+        style={{ 
+          width: "197px", 
+          height: "60px" 
+        }}
       >
         <g clipPath="url(#clip0_28_10)">
           <rect width="197" height="60" fill="#F4D762"></rect>
