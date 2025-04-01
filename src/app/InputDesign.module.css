@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 0;
+  padding: 5% 5%; /* Consistent padding all around */
   margin: 0;
 }
 
@@ -22,7 +22,7 @@
   color: #fff;
   text-align: right;
   font-family: 'Impact', sans-serif;
-  font-size: 80px;
+  font-size: 8vh; /* Scale font size with viewport height */
   font-weight: 400;
   margin: 0;
   position: relative;
@@ -33,59 +33,25 @@
   justify-content: flex-end;
   width: 100%;
   overflow-wrap: break-word;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-@media (width<=991px) {
-  .container {
-    padding: 0; /* Reset padding */
-  }
-
-  .movieTitle {
-    font-size: 72px;
-    right: 15px;
-    bottom: 80px;
-    overflow-wrap: break-word;
-  }
-}
-
-@media (width<=640px) {
-  .container {
-    padding: 0; /* Reset padding */
-  }
-
-  .movieTitle {
-    font-size: 60px;
-    right: 10px;
-    bottom: 60px;
-    overflow-wrap: break-word;
-  }
+  max-height: 70vh; /* Limit title height */
+  overflow-y: auto; /* Enable internal scrolling */
 }
 
 .navigationControls {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 24px;
+  gap: 5%; /* Consistent gap between buttons */
   width: 100%;
-  bottom: 40px;
-}
-
-@media (width<=640px) {
-  .navigationControls {
-    gap: 12px;
-    bottom: 20px;
-    right: 10px;
-  }
+  margin-bottom: 2%; /* Consistent bottom margin */
 }
 
 .previousButton {
   color: #fff;
   background-color: #000;
-  padding: 10px 12px;
+  padding: 2% 4%; /* Consistent button padding */
   font-family: Impact, sans-serif;
-  font-size: 16px;
+  font-size: 2.5vh; /* Scale font size */
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
