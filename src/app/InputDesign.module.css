@@ -1,27 +1,38 @@
-@font-face {
-  font-family: 'Impact';
-  src: url('/fonts/impact.ttf') format('truetype'); /* Changed to ttf */
-  font-weight: normal;
-  font-style: normal;
+/* CSS Reset (Very Basic) */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
+/* Force full height and prevent scrolling */
 .container {
   background-color: #000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
+  position: relative;
+  width: 100%;
   height: 100vh;
   max-height: 100vh;
-  padding: 0;
-  position: relative;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Impact';
+  src: url('/fonts/impact.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .movieTitle {
   color: #fff;
   text-align: right;
-  font-family: 'Impact', sans-serif; /* Use local Impact font */
+  font-family: 'Impact', sans-serif;
   font-size: 80px;
   font-weight: 400;
   margin: 0;

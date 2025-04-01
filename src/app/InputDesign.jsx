@@ -89,34 +89,40 @@ function InputDesign() {
   }, [loading]);
 
   return (
-    <main className={styles.container}>
-      {loading && <h1 className={styles.movieTitle}>{loadingText}</h1>}
-      {error && (
-        <h1 className={styles.movieTitle} style={{ color: "red" }}>
-          Error: {error}
-        </h1>
-      )}
-      {movieBatch.length > 0 && !loading && !error && (
-        <h1 className={styles.movieTitle}>{movieBatch[currentMovieIndex]}</h1>
-      )}
-      {movieBatch.length === 0 && !loading && !error && (
-        <button onClick={fetchMovieBatch}>Fetch Initial Movies</button>
-      )}
-      <nav className={styles.navigationControls}>
-        <button
-          aria-label="Previous Movie"
-          className={styles.previousButton}
-          onClick={() => {
-            if (currentMovieIndex > 0) {
-              setCurrentMovieIndex(currentMovieIndex - 1);
-            }
-          }}
-        >
-          Previous
-        </button>
-        <NextMovieButton onClick={nextMovie} />
-      </nav>
-    </main>
+    <>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Impact&display=swap"
+        rel="stylesheet"
+      />
+      <main className={styles.container}>
+        {loading && <h1 className={styles.movieTitle}>{loadingText}</h1>}
+        {error && (
+          <h1 className={styles.movieTitle} style={{ color: "red" }}>
+            Error: {error}
+          </h1>
+        )}
+        {movieBatch.length > 0 && !loading && !error && (
+          <h1 className={styles.movieTitle}>{movieBatch[currentMovieIndex]}</h1>
+        )}
+        {movieBatch.length === 0 && !loading && !error && (
+          <button onClick={fetchMovieBatch}>Fetch Initial Movies</button>
+        )}
+        <nav className={styles.navigationControls}>
+          <button
+            aria-label="Previous Movie"
+            className={styles.previousButton}
+            onClick={() => {
+              if (currentMovieIndex > 0) {
+                setCurrentMovieIndex(currentMovieIndex - 1);
+              }
+            }}
+          >
+            Previous
+          </button>
+          <NextMovieButton onClick={nextMovie} />
+        </nav>
+      </main>
+    </>
   );
 }
 
