@@ -1,20 +1,27 @@
+@font-face {
+  font-family: 'Impact';
+  src: url('/fonts/impact.ttf') format('truetype'); /* Changed to ttf */
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container {
   background-color: #000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  min-height: 100vh;
-  height: 100vh; /* Changed from min-height to height */
-  padding: 40px 20px;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 0;
   position: relative;
-  overflow: hidden; /* Prevent content from overflowing the container */
+  overflow: hidden;
 }
 
 .movieTitle {
   color: #fff;
   text-align: right;
-  font-family: Impact, sans-serif;
+  font-family: 'Impact', sans-serif; /* Use local Impact font */
   font-size: 80px;
   font-weight: 400;
   margin: 0;
