@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 0 20px; /* Added padding on left and right */
+  padding: 0;
   margin: 0;
 }
 
@@ -39,7 +39,7 @@
 
 @media (width<=991px) {
   .container {
-    padding: 0 15px; /* Adjusted padding for medium screens */
+    padding: 30px 15px;
   }
 
   .movieTitle {
@@ -52,7 +52,7 @@
 
 @media (width<=640px) {
   .container {
-    padding: 0 10px; /* Adjusted padding for small screens */
+    padding: 20px 10px;
   }
 
   .movieTitle {
