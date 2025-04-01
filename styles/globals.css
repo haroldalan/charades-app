@@ -1,7 +1,8 @@
-.next-movie-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: block;
-  }
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
