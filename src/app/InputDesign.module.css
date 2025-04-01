@@ -7,51 +7,39 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 5% 5%; /* Consistent padding all around */
+  padding: 5%; /* Consistent padding */
   margin: 0;
-}
-
-@font-face {
-  font-family: 'Impact';
-  src: url('/fonts/impact.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 .movieTitle {
   color: #fff;
   text-align: right;
   font-family: 'Impact', sans-serif;
-  font-size: 8vh; /* Scale font size with viewport height */
+  font-size: 8vh; /* Scalable font size */
   font-weight: 400;
   margin: 0;
-  position: relative;
-  top: 0;
-  flex: 1;
+  flex: 1; /* Allow it to grow */
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   overflow-wrap: break-word;
-  max-height: 70vh; /* Limit title height */
-  overflow-y: auto; /* Enable internal scrolling */
 }
 
 .navigationControls {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 5%; /* Consistent gap between buttons */
+  gap: 5%; /* Consistent gap */
   width: 100%;
-  margin-bottom: 2%; /* Consistent bottom margin */
 }
 
 .previousButton {
   color: #fff;
   background-color: #000;
-  padding: 2% 4%; /* Consistent button padding */
+  padding: 2% 5%; /* Consistent button padding */
   font-family: Impact, sans-serif;
-  font-size: 2.5vh; /* Scale font size */
+  font-size: 2.5vh; /* Scalable font size */
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
@@ -61,7 +49,6 @@
   opacity: 0.6;
 }
 
-/* Button styling */
 .next-movie-button {
   background: none;
   border: none;
