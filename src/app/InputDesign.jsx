@@ -111,8 +111,10 @@ function InputDesign() {
   return (
     <>
       <link
+        rel="preload"
         href="https://fonts.googleapis.com/css2?family=Impact&display=swap"
-        rel="stylesheet"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
       />
       <main className={styles.container}>
         {loading && <h1 className={styles.movieTitle}>Loading{loadingDots}</h1>}
@@ -120,13 +122,13 @@ function InputDesign() {
           <button
             onClick={fetchMovieBatch}
             style={{
-              background: 'none',
-              border: '2px solid red',
-              padding: '10px 20px',
-              cursor: 'pointer',
-              color: 'red',
-              fontFamily: 'Impact, sans-serif',
-              fontSize: '20px',
+              background: "none",
+              border: "2px solid red",
+              padding: "10px 20px",
+              cursor: "pointer",
+              color: "red",
+              fontFamily: "Impact, sans-serif",
+              fontSize: "20px",
             }}
           >
             Refresh
@@ -140,20 +142,20 @@ function InputDesign() {
         {movieBatch.length === 0 && !loading && !error && (
           <button onClick={fetchMovieBatch}>Fetch Initial Movies</button>
         )}
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
           <button
             ref={previousButtonRef}
             onClick={handlePreviousClick}
             disabled={loading || currentMovieIndex === 0}
             style={{
-              background: 'none',
-              border: 'none',
-              padding: '0',
-              cursor: (loading || currentMovieIndex === 0) ? 'not-allowed' : 'pointer',
-              color: (loading || currentMovieIndex === 0) ? '#555' : '#fff',
-              fontFamily: 'Impact, sans-serif',
-              fontSize: '16px',
-              transition: 'opacity 0.1s ease-in-out', // For smoother disabled state
+              background: "none",
+              border: "none",
+              padding: "0",
+              cursor: loading || currentMovieIndex === 0 ? "not-allowed" : "pointer",
+              color: loading || currentMovieIndex === 0 ? "#555" : "#fff",
+              fontFamily: "Impact, sans-serif",
+              fontSize: "16px",
+              transition: "opacity 0.1s ease-in-out", // For smoother disabled state
             }}
           >
             Previous

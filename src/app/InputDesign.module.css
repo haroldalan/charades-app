@@ -1,24 +1,24 @@
 .container {
   background-color: #000;
   flex-direction: column;
-  align-items: flex-end; /* Keeps the horizontal alignment as right */
-  justify-content: flex-start; /* Align items to the top initially */
+  align-items: flex-end;
+  justify-content: flex-start;
   gap: 40px;
   max-width: none;
-  min-height: 100vh;
+  min-height: 100%; /* Changed from 100vh */
   margin-left: auto;
   margin-right: auto;
   padding: 40px 20px;
   display: flex;
 }
 
-@media (width<=991px) {
+@media (width <= 991px) {
   .container {
     max-width: 991px;
   }
 }
 
-@media (width<=640px) {
+@media (width <= 640px) {
   .container {
     max-width: 640px;
     padding: 20px 10px;
@@ -28,25 +28,25 @@
 .movieTitle {
   color: #fff;
   text-align: right;
-  font-family: Impact, sans-serif;
-  font-size: 72px; /* Increased font size for impact */
+  font-family: Impact, Arial, Helvetica, sans-serif; /* Added fallback fonts */
+  font-size: 72px;
   font-weight: 400;
   margin: 0;
-  flex-grow: 1; /* Allow the movie title to take up available space */
-  display: flex; /* To center the text within the title */
-  align-items: center; /* Vertically center the text within the title */
-  justify-content: flex-end; /* Keep text aligned to the right */
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-@media (width<=991px) {
+@media (width <= 991px) {
   .movieTitle {
-    font-size: 64px; /* Increased font size for impact */
+    font-size: 64px;
   }
 }
 
-@media (width<=640px) {
+@media (width <= 640px) {
   .movieTitle {
-    font-size: 60px;  /* Increased font size for impact */
+    font-size: 60px;
   }
 }
 
