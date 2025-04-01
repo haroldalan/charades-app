@@ -1,12 +1,12 @@
 .container {
   background-color: #000;
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
+  flex-direction: column;
   align-items: flex-end;
-  justify-content: flex-start; /* Align items at the start */
+  justify-content: flex-start;
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Ensure full viewport height */
+  min-height: 100vh;
   padding: 0;
   margin: 0;
 }
@@ -27,14 +27,14 @@
   margin: 0;
   position: relative;
   top: 0;
-  flex: 1; /* Allow it to grow and take available space */
+  flex: 1;
   display: flex;
-  align-items: center; /* Center vertically within available space */
-  justify-content: center; /* Center vertically */
+  align-items: center;
+  justify-content: flex-end; /* Changed from center to flex-end */
   width: 100%;
   overflow-wrap: break-word;
-  max-height: 80vh; /* Limit the maximum height of the title */
-  overflow-y: auto; /* Enable internal scrolling if needed */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 @media (width<=991px) {
@@ -69,7 +69,7 @@
   justify-content: flex-end;
   gap: 24px;
   width: 100%;
-  /* position: absolute; */  /* Removed absolute positioning */
+  /* position: absolute; */
   bottom: 40px;
 }
 
